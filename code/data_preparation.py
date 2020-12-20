@@ -47,7 +47,10 @@ r = 0
 def get_wrong_countries(row):
     global r
     for country in list_of_countries:
-        if country in row["Country/Region"]:
+        if row["Country/Region"] in country:
+            r = r + 1
+            return country
+        elif country in row["Country/Region"]:
             r = r + 1
             return country
     wrong_names.append(row["Country/Region"])    
