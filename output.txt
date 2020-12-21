@@ -1,0 +1,232 @@
+
+Initial 5 rows of data:
+    SNo ObservationDate Province/State  ... Confirmed Deaths  Recovered
+0    1      01/22/2020          Anhui  ...       1.0    0.0        0.0
+1    2      01/22/2020        Beijing  ...      14.0    0.0        0.0
+2    3      01/22/2020      Chongqing  ...       6.0    0.0        0.0
+3    4      01/22/2020         Fujian  ...       1.0    0.0        0.0
+4    5      01/22/2020          Gansu  ...       0.0    0.0        0.0
+
+[5 rows x 8 columns]
+
+Report of numerical data:
+                  SNo     Confirmed         Deaths     Recovered
+count  116805.000000  1.168050e+05  116805.000000  1.168050e+05
+mean    58403.000000  1.908217e+04     777.745473  1.117002e+04
+std     33718.843434  5.825465e+04    2859.184068  6.258701e+04
+min         1.000000  0.000000e+00       0.000000  0.000000e+00
+25%     29202.000000  2.450000e+02       3.000000  4.000000e+00
+50%     58403.000000  2.148000e+03      42.000000  4.260000e+02
+75%     87604.000000  1.037400e+04     331.000000  3.829000e+03
+max    116805.000000  1.242770e+06   42072.000000  2.670256e+06
+
+Size and shape of data: (116805, 8)
+
+Null values in columns:
+ SNo                    0
+ObservationDate        0
+Province/State     35353
+Country/Region         0
+Last Update            0
+Confirmed              0
+Deaths                 0
+Recovered              0
+dtype: int64
+Negative values in confirmed column:  0
+Negative values in deaths column:  0
+Negative values in recovered column:  0
+
+After droping columns:
+
+  ObservationDate  Country/Region  Confirmed  Deaths  Recovered
+0      01/22/2020  Mainland China        1.0     0.0        0.0
+1      01/22/2020  Mainland China       14.0     0.0        0.0
+2      01/22/2020  Mainland China        6.0     0.0        0.0
+3      01/22/2020  Mainland China        1.0     0.0        0.0
+4      01/22/2020  Mainland China        0.0     0.0        0.0
+
+After formatting observation date:
+
+  ObservationDate  Country/Region  Confirmed  Deaths  Recovered
+0      2020-01-22  Mainland China        1.0     0.0        0.0
+1      2020-01-22  Mainland China       14.0     0.0        0.0
+2      2020-01-22  Mainland China        6.0     0.0        0.0
+3      2020-01-22  Mainland China        1.0     0.0        0.0
+4      2020-01-22  Mainland China        0.0     0.0        0.0
+Mainland China                      Hong Kong                           Macau                               Taiwan                              US                                 
+
+Japan                               Thailand                            South Korea                         Singapore                           Philippines                        
+
+Malaysia                            Vietnam                             Australia                           Mexico                              Brazil                             
+
+Colombia                            France                              Nepal                               Canada                              Cambodia                           
+
+Sri Lanka                           Ivory Coast                         Germany                             Finland                             United Arab Emirates               
+
+India                               Italy                               UK                                  Russia                              Sweden                             
+
+Spain                               Belgium                             Others                              Egypt                               Iran                               
+
+Israel                              Lebanon                             Iraq                                Oman                                Afghanistan                        
+
+Bahrain                             Kuwait                              Austria                             Algeria                             Croatia                            
+
+Switzerland                         Pakistan                            Georgia                             Greece                              North Macedonia                    
+
+Norway                              Romania                             Denmark                             Estonia                             Netherlands                        
+
+San Marino                           Azerbaijan                         Belarus                             Iceland                             Lithuania                          
+
+New Zealand                         Nigeria                             North Ireland                       Ireland                             Luxembourg                         
+
+Monaco                              Qatar                               Ecuador                             Azerbaijan                          Czech Republic                     
+
+Armenia                             Dominican Republic                  Indonesia                           Portugal                            Andorra                            
+
+Latvia                              Morocco                             Saudi Arabia                        Senegal                             Argentina                          
+
+Chile                               Jordan                              Ukraine                             Saint Barthelemy                    Hungary                            
+
+Faroe Islands                       Gibraltar                           Liechtenstein                       Poland                              Tunisia                            
+
+Palestine                           Bosnia and Herzegovina              Slovenia                            South Africa                        Bhutan                             
+
+Cameroon                            Costa Rica                          Peru                                Serbia                              Slovakia                           
+
+Togo                                Vatican City                        French Guiana                       Malta                               Martinique                         
+
+Republic of Ireland                 Bulgaria                            Maldives                            Bangladesh                          Moldova                            
+
+Paraguay                            Albania                             Cyprus                              St. Martin                          Brunei                             
+
+occupied Palestinian territory      ('St. Martin',)                     Burkina Faso                        Channel Islands                     Holy See                           
+
+Mongolia                            Panama                              Bolivia                             Honduras                            Congo (Kinshasa)                   
+
+Jamaica                             Reunion                             Turkey                              Cuba                                Guyana                             
+
+Kazakhstan                          Cayman Islands                      Guadeloupe                          Ethiopia                            Sudan                              
+
+Guinea                              Antigua and Barbuda                 Aruba                               Kenya                               Uruguay                            
+
+Ghana                               Jersey                              Namibia                             Seychelles                          Trinidad and Tobago                
+
+Venezuela                           Curacao                             Eswatini                            Gabon                               Guatemala                          
+
+Guernsey                            Mauritania                          Rwanda                              Saint Lucia                         Saint Vincent and the Grenadines   
+
+Suriname                            Kosovo                              Central African Republic            Congo (Brazzaville)                 Equatorial Guinea                  
+
+Uzbekistan                          Guam                                Puerto Rico                         Benin                               Greenland                          
+
+Liberia                             Mayotte                             Republic of the Congo               Somalia                             Tanzania                           
+
+The Bahamas                         Barbados                            Montenegro                          The Gambia                          Kyrgyzstan                         
+
+Mauritius                           Zambia                              Djibouti                            Gambia, The                         Bahamas, The                       
+
+Chad                                El Salvador                         Fiji                                Nicaragua                           Madagascar                         
+
+Haiti                               Angola                              Cabo Verde                          Niger                               Papua New Guinea                   
+
+Zimbabwe                            Cape Verde                          East Timor                          Eritrea                             Uganda                             
+
+Bahamas                             Dominica                            Gambia                              Grenada                             Mozambique                         
+
+Syria                               Timor-Leste                         Belize                              Laos                                Libya                              
+
+Diamond Princess                    Guinea-Bissau                       Mali                                Saint Kitts and Nevis               West Bank and Gaza                 
+
+Burma                               MS Zaandam                          Botswana                            Burundi                             Sierra Leone                       
+
+Malawi                              South Sudan                         Western Sahara                      Sao Tome and Principe               Yemen                              
+
+Number of unique contry names:  223
+
+China                               Hong Kong                           Macau                               Taiwan                              US                                 
+
+Japan                               Thailand                            South Korea                         Singapore                           Philippines                        
+
+Malaysia                            Vietnam                             Australia                           Mexico                              Brazil                             
+
+Colombia                            France                              Nepal                               Canada                              Cambodia                           
+
+Sri Lanka                           Ivory Coast                         Germany                             Finland                             United Arab Emirates               
+
+India                               Italy                               UK                                  Russia                              Sweden                             
+
+Spain                               Belgium                             Others                              Egypt                               Iran                               
+
+Israel                              Lebanon                             Iraq                                Oman                                Afghanistan                        
+
+Bahrain                             Kuwait                              Austria                             Algeria                             Croatia                            
+
+Switzerland                         Pakistan                            Georgia                             Greece                              North Macedonia                    
+
+Norway                              Romania                             Denmark                             Estonia                             Netherlands                        
+
+San Marino                          Azerbaijan                          Belarus                             Iceland                             Lithuania                          
+
+New Zealand                         Nigeria                             North Ireland                       Ireland                             Luxembourg                         
+
+Monaco                              Qatar                               Ecuador                             Czech Republic                      Armenia                            
+
+Dominican Republic                  Indonesia                           Portugal                            Andorra                             Latvia                             
+
+Morocco                             Saudi Arabia                        Senegal                             Argentina                           Chile                              
+
+Jordan                              Ukraine                             Saint Barthelemy                    Hungary                             Faroe Islands                      
+
+Gibraltar                           Liechtenstein                       Poland                              Tunisia                             Palestine                          
+
+Bosnia and Herzegovina              Slovenia                            South Africa                        Bhutan                              Cameroon                           
+
+Costa Rica                          Peru                                Serbia                              Slovakia                            Togo                               
+
+Vatican City                        French Guiana                       Malta                               Martinique                          Republic of Ireland                
+
+Bulgaria                            Maldives                            Bangladesh                          Moldova                             Paraguay                           
+
+Albania                             Cyprus                              St Martin                           Brunei                              occupied Palestinian territory     
+
+Burkina Faso                        Channel Islands                     Holy See                            Mongolia                            Panama                             
+
+Bolivia                             Honduras                            Congo Kinshasa                      Jamaica                             Reunion                            
+
+Turkey                              Cuba                                Guyana                              Kazakhstan                          Cayman Islands                     
+
+Guadeloupe                          Ethiopia                            Sudan                               Guinea                              Antigua and Barbuda                
+
+Aruba                               Kenya                               Uruguay                             Ghana                               Jersey                             
+
+Namibia                             Seychelles                          Trinidad and Tobago                 Venezuela                           Curacao                            
+
+Eswatini                            Gabon                               Guatemala                           Guernsey                            Mauritania                         
+
+Rwanda                              Saint Lucia                         Saint Vincent and the Grenadines    Suriname                            Kosovo                             
+
+Central African Republic            Congo Brazzaville                   Equatorial Guinea                   Uzbekistan                          Guam                               
+
+Puerto Rico                         Benin                               Greenland                           Liberia                             Mayotte                            
+
+Republic of the Congo               Somalia                             Tanzania                            Bahamas                             Barbados                           
+
+Montenegro                          Gambia                              Kyrgyzstan                          Mauritius                           Zambia                             
+
+Djibouti                            Chad                                El Salvador                         Fiji                                Nicaragua                          
+
+Madagascar                          Haiti                               Angola                              Cabo Verde                          Niger                              
+
+Papua New Guinea                    Zimbabwe                            Cape Verde                          East Timor                          Eritrea                            
+
+Uganda                              Dominica                            Grenada                             Mozambique                          Syria                              
+
+TimorLeste                          Belize                              Laos                                Libya                               Diamond Princess                   
+
+GuineaBissau                        Mali                                Saint Kitts and Nevis               West Bank and Gaza                  Burma                              
+
+MS Zaandam                          Botswana                            Burundi                             Sierra Leone                        Malawi                             
+
+South Sudan                         Western Sahara                      Sao Tome and Principe               Yemen                               Comoros                            
+
+Number of unique contry names after cleaning:  217

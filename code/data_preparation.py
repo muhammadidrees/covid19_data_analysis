@@ -4,7 +4,6 @@
 
 import pandas as pd
 import numpy as np
-import pycountry
 
 # covert the data file into a dataframe so it's easy to manupilate
 covid = pd.read_csv("data/covid_19_data.csv")
@@ -21,7 +20,12 @@ print("\nSize and shape of data:", covid.shape)
 # check null values in each column
 print("\nNull values in columns:\n", covid.isnull().sum())
 
-# droping S No, province/state and Last Update columns 
+# check for negative values in numeric columns
+print("Negative values in confirmed column: ", len(covid.loc[covid["Confirmed"] < 0]))
+print("Negative values in deaths column: ", len(covid.loc[covid["Deaths"] < 0]))
+print("Negative values in recovered column: ", len(covid.loc[covid["Recovered"] < 0]))
+
+# droping S. No., province/state and Last Update columns 
 covid.drop(["SNo", "Province/State", "Last Update"], 1, inplace=True)
 
 # verifying update
@@ -35,43 +39,51 @@ covid["ObservationDate"] = pd.to_datetime(covid["ObservationDate"])
 print("\nAfter formatting observation date:\n")
 print(covid.head())
 
-grouped_country=covid.groupby(["Country/Region"], as_index=False).agg({"Confirmed":'sum',"Recovered":'sum',"Deaths":'sum'})
+# give unique values
+unique_countries = covid["Country/Region"].unique()
 
-print("\nAfter formatting observation date:\n")
-print(grouped_country.head())
-print(grouped_country.shape)
+# print out countries to see the unique one's and check
+# for any repeating or wrong data
+for a, b, c, d, e in zip(*[iter(unique_countries)]*5):
+    print("{:35s} {:35s} {:35s} {:35s} {:35s}\n".format(a, b, c, d, e))
 
-list_of_countries = [country.name for country in list(pycountry.countries)]
-wrong_names = []
-r = 0
-def get_wrong_countries(row):
-    global r
-    for country in list_of_countries:
-        if row["Country/Region"] in country:
-            r = r + 1
-            return country
-        elif country in row["Country/Region"]:
-            r = r + 1
-            return country
-    wrong_names.append(row["Country/Region"])    
-    return 
-    # return row['height'] * row['width']
+# no. of unique countires
+print("Number of unique contry names: ", len(unique_countries))
 
-print(grouped_country.apply(get_wrong_countries, axis=1))
-print(wrong_names)
+# printing showed some countries have punctuations and also leading traling spaces
+# also Bahamas and Gambia were repeated multiple times so we have to remove this
+# ambiguity and renaming china US and UK to give them proper names
+
+# remove punctuation
+covid["Country/Region"] = covid["Country/Region"].str.replace(r'[^\w\s]','')
+
+# extra spaces in country names
+covid["Country/Region"] = covid["Country/Region"].str.strip()
+
+# convert all instances of Bahamas to Bahamas
+covid["Country/Region"] = covid["Country/Region"].apply(lambda x: "Bahamas" if "Bahamas" in x else x)
+
+# convert all instances of Gambia to Gambia
+covid["Country/Region"] = covid["Country/Region"].apply(lambda x: "Gambia" if "Gambia" in x else x)
+
+# convert all instances of China to China
+covid["Country/Region"] = covid["Country/Region"].apply(lambda x: "China" if "China" in x else x)
+
+# convert all instances of US to United States
+covid["Country/Region"] = covid["Country/Region"].apply(lambda x: "US" if "United States" in x else x)
+
+# convert all instances of UK to United Kingdom
+covid["Country/Region"] = covid["Country/Region"].apply(lambda x: "UK" if "United Kingdom" in x else x)
+
+# give unique values
+unique_countries = covid["Country/Region"].unique()
 
 print()
-print(r)
-print()
-print()
-print(list_of_countries)
 
-# print("\nNull values in columns:\n", grouped_country.)
-# print(covid["Country/Region"].str.len())
-# print(covid.groupby("Country/Region", as_index=False).apply(lambda x: x[x["Country/Region"].str.len() == x["Country/Region"].str.len().max()]))
+for a, b, c, d, e in zip(*[iter(unique_countries)]*5):
+    print("{:35s} {:35s} {:35s} {:35s} {:35s}\n".format(a, b, c, d, e))
 
-# country_len = covid["Country/Region"].str.len()
+# no. of unique countires after cleaning
+print("Number of unique contry names after cleaning: ", len(unique_countries))
 
-# print(covid.pivot_table(index = ["Country/Region"], aggfunc ='size'))
-# dups = df.pivot_table(index = ['Course'], aggfunc ='size')
-# print(len(pycountry.countries)) 
+covid.to_csv("data/covid_19_clean_data.csv")
